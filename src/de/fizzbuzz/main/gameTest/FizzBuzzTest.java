@@ -1,7 +1,6 @@
 package de.fizzbuzz.main.gameTest;
 
 import de.fizzbuzz.main.game.FizzBuzz;
-import de.fizzbuzz.main.game.Parameter;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -13,50 +12,43 @@ public class FizzBuzzTest {
     private final FizzBuzz cut = new FizzBuzz();
 
         @Test
-         public void checkIfNumberToHighOrToLowTest() throws Exception {
+         public void checkIfNumberIsValid() throws Exception {
             cut.checkIfNumberToHighOrToLow(50);
        }
 
-       @Test
-        public void CheckIfParameterCanBeDividedByThree() {
-           int p = cut.CheckIfParameterCanBeDividedByThree(3);
-           int expectedNumber = 3;
-           assertThat(p, is(expectedNumber));
+       @Test(expected = Exception.class)
+       public void checkIfNumberIsInvalid() throws Exception {
+           cut.checkIfNumberToHighOrToLow(101);
        }
 
        @Test
-        public void CheckIfParameterCanBeDividedByFive() {
-            int p = cut.CheckIfParameterCanBeDividedByFive(5);
-            int expectedNumber = 5;
-            assertThat(p, is(expectedNumber));
+        public void checkIfParameterCanBeDividedByThree() {
+           String parameter = cut.checkIfParameterCanBeDividedByThree(6);
+           String expectedOutput = "Fizz";
+           assertThat(parameter, is(expectedOutput));
+       }
+
+       @Test
+        public void checkIfParameterCanBeDividedByFive() {
+            String parameter = cut.checkIfParameterCanBeDividedByFive(5);
+            String expectedOutput = "Buzz";
+            assertThat(parameter, is(expectedOutput));
 
        }
 
        @Test
-        public void CheckIfParameterCanBeDividedByThreeAndFive() {
-            Parameter p = cut.CheckIfParameterCanBeDividedByThreeAndFive(3, 5);
-            System.out.println(p.parameterFive);
-
-            int expectedNumberThree = 3;
-            int expectedNumberFive = 5;
-
-             assertThat(p.parameterThree, is(expectedNumberThree));
-             assertThat(p.parameterFive, is(expectedNumberFive));
+        public void checkIfParameterCanBeDividedByThreeAndFive() {
+            String parameter = cut.checkIfParameterCanBeDividedByThreeAndFive(15);
+            String expectedOutput = "FizzBuzz";
+            assertThat(parameter, is(expectedOutput));
        }
+
+
        @Test
-        public void CheckIfParameterCantBeDividedByThreeAndFive() {
-           Parameter p = cut.CheckIfParameterCantBeDividedByThreeAndFive(3, 5);
-           System.out.println(p.parameterFive);
-
-           int expectedNumberThree = 3;
-           int expectedNumberFive = 5;
-
-           assertThat(p.parameterThree, is(expectedNumberThree));
-           assertThat(p.parameterFive, is(expectedNumberFive));
+        public void checkIfParameterCantBeDividedByThreeAndFive() {
+           String parameter = cut.checkIfParameterCantBeDividedByThreeAndFive(564556321);
+           String expectedOutput = "nothing";
+           assertThat(parameter, is(expectedOutput));
        }
 
     }
-
-
-
-
