@@ -8,70 +8,43 @@ public class FizzBuzz {
 
     private final Scanner scanner = new Scanner(System.in);
     private int parameter = 0;
-    private boolean checkIfBoth = true;
+    public static String returnValue;
 
 
     public void run() throws Exception {
         gameLogic();
     }
 
-
-    public int checkIfNumberToHighOrToLow(int parameter) throws Exception {
+    public String calculate(int parameter) throws Exception {
         if (parameter > 100 || parameter < 0) {
             System.out.println("Die Nummer "+TerminalColors.ANSI_YELLOW + parameter +TerminalColors.ANSI_RESET+ " liegt nicht zwischen"+TerminalColors.ANSI_RED+" 1-100"+TerminalColors.ANSI_RESET+"!");
-            throw new Exception("Exception message");
+            throw new Exception("Exception");
         }
-        return parameter;
-    }
 
-    public String checkIfParameterCanBeDividedByThree(int parameter) {
-        if (!checkIfBoth) {
-            return "";
-        }
-        if (parameter % 3 == 0) {
-            System.out.println("Fizz");
-            return "Fizz";
-        }
-        return "nothing";
-    }
-
-    public String checkIfParameterCanBeDividedByFive(int parameter) {
-        if (!checkIfBoth) {
-            return "";
-        }
-        if (parameter % 5 == 0) {
-            System.out.println("Buzz");
-            return "Buzz";
-        }
-        return "nothing";
-    }
-
-    public String checkIfParameterCanBeDividedByThreeAndFive(int parameter) {
         if (parameter % 3 == 0 && parameter % 5 == 0) {
             System.out.println("FizzBuzz");
-            checkIfBoth = false;
-            return "FizzBuzz";
+            return returnValue =  "FizzBuzz";
         }
-        return "nothing";
 
-    }
-
-    public int checkIfParameterCantBeDividedByThreeAndFive(int parameter) {
-        if (parameter % 3 != 0 && parameter % 5 != 0) {
-            System.out.println("Die Zahl "+TerminalColors.ANSI_GREEN+ parameter +TerminalColors.ANSI_RESET+ " konnte nicht dividiert werden durch "+TerminalColors.ANSI_RED+"3 oder 5"+TerminalColors.ANSI_RESET+".");
-            return parameter;
+        if (parameter % 3 == 0) {
+            System.out.println("Fizz");
+            return returnValue = "Fizz";
         }
-        return 0;
+
+        if (parameter % 5 == 0) {
+            System.out.println("Buzz");
+            return returnValue = "Buzz";
+        }
+
+        System.out.println("Die Zahl "+TerminalColors.ANSI_GREEN+ parameter +TerminalColors.ANSI_RESET+ " konnte nicht dividiert werden durch "+TerminalColors.ANSI_RED+"3 oder 5"+TerminalColors.ANSI_RESET+".");
+
+        return returnValue = Integer.toString(parameter);
     }
 
 
     private void gameLogic() throws Exception {
         System.out.println("Gib eine "+ TerminalColors.ANSI_BLUE+"Nummer"+TerminalColors.ANSI_RESET+" ein von"+TerminalColors.ANSI_RED+" 1-100"+TerminalColors.ANSI_RESET+"!");
         parameter = Integer.parseInt(scanner.nextLine());
-        checkIfNumberToHighOrToLow(parameter);
-        checkIfParameterCanBeDividedByThreeAndFive(parameter);
-        checkIfParameterCanBeDividedByThree(parameter);
-        checkIfParameterCanBeDividedByFive(parameter);
-        checkIfParameterCantBeDividedByThreeAndFive(parameter);
+        calculate(parameter);
         }
     }
