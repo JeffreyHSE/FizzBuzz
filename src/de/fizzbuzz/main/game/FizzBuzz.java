@@ -22,23 +22,25 @@ public class FizzBuzz {
         }
 
         if (parameter % 3 == 0 && parameter % 5 == 0) {
-            System.out.println("FizzBuzz");
             return returnValue =  "FizzBuzz";
         }
 
         if (parameter % 3 == 0) {
-            System.out.println("Fizz");
             return returnValue = "Fizz";
         }
 
         if (parameter % 5 == 0) {
-            System.out.println("Buzz");
             return returnValue = "Buzz";
         }
 
-        System.out.println("Die Zahl "+TerminalColors.ANSI_GREEN+ parameter +TerminalColors.ANSI_RESET+ " konnte nicht dividiert werden durch "+TerminalColors.ANSI_RED+"3 oder 5"+TerminalColors.ANSI_RESET+".");
-
-        return returnValue = Integer.toString(parameter);
+            return returnValue = Integer.toString(parameter);
+    }
+    private void message() {
+        if(parameter % 3 != 0 && parameter % 5 != 0) {
+            System.out.println("Die Zahl "+TerminalColors.ANSI_GREEN+ returnValue +TerminalColors.ANSI_RESET+ " konnte nicht dividiert werden durch "+TerminalColors.ANSI_RED+"3 oder 5"+TerminalColors.ANSI_RESET+".");
+        } else {
+            System.out.println(returnValue);
+        }
     }
 
 
@@ -46,5 +48,6 @@ public class FizzBuzz {
         System.out.println("Gib eine "+ TerminalColors.ANSI_BLUE+"Nummer"+TerminalColors.ANSI_RESET+" ein von"+TerminalColors.ANSI_RED+" 1-100"+TerminalColors.ANSI_RESET+"!");
         parameter = Integer.parseInt(scanner.nextLine());
         calculate(parameter);
+        message();
         }
     }
