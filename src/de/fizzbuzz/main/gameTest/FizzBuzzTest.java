@@ -46,9 +46,8 @@ public class FizzBuzzTest {
 
        @Test
         public void checkIfParameterCantBeDividedByThreeAndFive() {
-           String parameter = cut.checkIfParameterCantBeDividedByThreeAndFive(564556321);
-           String expectedOutput = "nothing";
-           assertThat(parameter, is(expectedOutput));
+           int parameter = cut.checkIfParameterCantBeDividedByThreeAndFive(15);
+           assertThat(parameter, is(parameter));
        }
 
     }
