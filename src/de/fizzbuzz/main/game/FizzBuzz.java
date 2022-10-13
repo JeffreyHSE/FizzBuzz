@@ -56,12 +56,12 @@ public class FizzBuzz {
 
     }
 
-    public String checkIfParameterCantBeDividedByThreeAndFive(int parameter) {
+    public int checkIfParameterCantBeDividedByThreeAndFive(int parameter) {
         if (parameter % 3 != 0 && parameter % 5 != 0) {
             System.out.println("Die Zahl "+TerminalColors.ANSI_GREEN+ parameter +TerminalColors.ANSI_RESET+ " konnte nicht dividiert werden durch "+TerminalColors.ANSI_RED+"3 oder 5"+TerminalColors.ANSI_RESET+".");
-            return "nothing";
+            return parameter;
         }
-        return "FizzBuzz";
+        return 0;
     }
 
 
